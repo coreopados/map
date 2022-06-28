@@ -36,14 +36,16 @@
   
   $.getJSON('statelatlong.json', function (data) {
     for (var i = 0; i < data.length; i++) {
-      console.log(data[i].Latitude)
-       const marker = new google.maps.Marker({
+       myGeoObjects[i] = new google.maps.Marker({
           position: { lat: data[i].Latitude, lng: data[i].Longitude },
           map: map,
         });
 
     }
   });
+  
+  
+  consol.log(myGeoObjects)
   
   // Initialize and add the map
   function initMap() {

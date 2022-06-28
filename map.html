@@ -29,8 +29,8 @@
   myGeoObjects = [];
 
   $.getJSON('PoliceKillingsUS.json', function (data) {
-    console.log(data);
-    for (var i = 0; i < data.Points.length; i++) {
+    console.log(data.key);
+    for (var i = 0; i < data.key.length; i++) {
       myGeoObjects[0] = new ymaps.GeoObject({
         geometry: { type: "Point", coordinates: [57.211748, 52.979321] },
         properties: {

@@ -38,7 +38,7 @@
     for (var i = 0; i < data.length; i++) {
       console.log(data)
        const marker = new google.maps.Marker({
-          position: { lat: data.Latitude, lng: data.Longitude },
+          position: { lat: data[i].Latitude, lng: data[i].Longitude },
           map: map,
         });
 

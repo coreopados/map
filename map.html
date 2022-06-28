@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Карта возможностей и проблем</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+  <style>
+    html,
+    body,
+    #map {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      border: 2px red;
+    }
+  </style>
+</head>
+
+
+
+<script type="text/javascript">
+
+
+  myGeoObjects = [];
+
+  $.getJSON('PoliceKillingsUS.json', function (data) {
+    console.log(data);
+    for (var i = 0; i < data.Points.length; i++) {
+      myGeoObjects[0] = new ymaps.GeoObject({
+        geometry: { type: "Point", coordinates: [57.211748, 52.979321] },
+        properties: {
+          clusterCaption: 'Описание в кластере',
+          balloonContentBody: [
+            '<address style="font-style: normal">',
+            '<h3>Данные</h3>',
+            '<b>Данные: </b>МО "Название МО"<br>',
+            '<b>Данные: </b>ФИО Главы МО<br>',
+            '</address>'].join('')
+        }
+      },
+        {// Задаем пресет метки с точкой без содержимого.
+          preset: "islands#darkGreenDotIcon",
+        });
+    }
+  });
+
+  // Initialize and add the map
+  function initMap() {
+    // The location of Uluru
+    const uluru = { lat: -25.344, lng: 131.031 };
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 4,
+      center: uluru,
+    });
+    // The marker, positioned at Uluru
+    const marker = new google.maps.Marker({
+      position: uluru,
+      map: map,
+    });
+  }
+
+  window.initMap = initMap;
+
+
+</script>
+<div id="map"></div>
+
+
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+  defer></script>
+
+</body>

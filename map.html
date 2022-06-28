@@ -29,23 +29,9 @@
   myGeoObjects = [];
 
   $.getJSON('PoliceKillingsUS.json', function (data) {
-    console.log(data.key);
+    console.log(data);
     for (var i = 0; i < data.length; i++) {
-      myGeoObjects[0] = new ymaps.GeoObject({
-        geometry: { type: "Point", coordinates: [57.211748, 52.979321] },
-        properties: {
-          clusterCaption: 'Описание в кластере',
-          balloonContentBody: [
-            '<address style="font-style: normal">',
-            '<h3>Данные</h3>',
-            '<b>Данные: </b>МО "Название МО"<br>',
-            '<b>Данные: </b>ФИО Главы МО<br>',
-            '</address>'].join('')
-        }
-      },
-        {// Задаем пресет метки с точкой без содержимого.
-          preset: "islands#darkGreenDotIcon",
-        });
+      console.log(data.length)
     }
   });
 

@@ -35,7 +35,8 @@
   });
   
   $.getJSON('statelatlong.json', function (data) {
-    for (var i = 0; i < data.length; i++) {    
+    for (var i = 0; i < data.length; i++) {
+      console.log(data)
        const marker = new google.maps.Marker({
           position: { lat: data.Latitude, lng: data.Longitude },
           map: map,
